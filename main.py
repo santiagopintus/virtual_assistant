@@ -2,8 +2,6 @@ import speech_recognition as sr
 import pyttsx3
 import webbrowser
 from datetime import date, timedelta, datetime
-# import serial  # used to communicate with Arduino board
-# # import pyowm  # used to tell the weather
 # from Keys import OPENWEATHER # Keys.py is where I store all my API keys David will use
 import operator  # used for math operations
 import random  # will be used throughout for random response choices
@@ -18,6 +16,8 @@ engine = pyttsx3.init()
 newVoiceRate = 145
 engine.setProperty('rate',newVoiceRate)
 engine.setProperty('volume', 1.0)
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[2].id)
 
 # La palabra que despierta el asistente
 WAKE = "David"
