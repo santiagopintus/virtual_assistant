@@ -6,6 +6,8 @@ from datetime import date, timedelta, datetime
 import operator  # used for math operations
 import random  # will be used throughout for random response choices
 import os  # used to interact with the computer's directory
+# My module with speeches to tell
+from speeches import speech
 
 # Speech Recognition Constants
 recognizer = sr.Recognizer()
@@ -65,7 +67,7 @@ class David:
         except sr.RequestError:
             print("Network error.")
 
-    # Used to speak to the user
+    # # Used to speak to the user
     def speak(self, text):
         engine.say(text)
         engine.runAndWait()
@@ -74,27 +76,27 @@ class David:
     def open_things(self, command):
         # Will need to expand on "open" commands
         if command == "open youtube":
-            asistente.speak("Opening YouTube.")
+            speech.open_youtube.play()
             webbrowser.open("https://www.youtube.com")
             pass
 
         elif command == "open facebook":
-            asistente.speak("Opening Facebook.")
+            speech.open_facebook.play()
             webbrowser.open("https://www.facebook.com")
             pass
 
         elif command == "open my documents":
-            asistente.speak("Te la abro ahora mismo")
+            speech.opening.play()
             os.startfile("D:/Documents")
             pass
 
         elif command == "open my downloads":
-            asistente.speak("Ok, opening it")
+            speech.opening.play()
             os.startfile("D:/0 Descargas")
             pass
 
         else:
-            asistente.speak("I don't know how to do that, yet")
+            speech.listening_error.play()
             pass
 
     # Used to track the date of the conversation, may need to add the time in the future
@@ -210,17 +212,14 @@ class David:
                 listening_byte = "T"  # T matches the Arduino sketch code for the blinking red color
                 # ser.write(listening_byte.encode("ascii"))  # encodes and sends the serial byte
 
-            elif command == "presentate":
-                asistente.speak("Soy Roberto, tu asistente virtual")
+            elif command == "introduce yourself":
+                speech.intro.play()
 
             elif command == "Que hora es":
                 self.understand_time(command)
 
             elif command == "how are you":
-                current_feelings = ["I'm okay.", "I'm doing well. Thank you.", "I am doing okay."]
-                # selects a random choice of greetings
-                greeting = random.choice(current_feelings)
-                asistente.speak(greeting)
+                speech.current_feeling.play()
 
             elif "weather" in command:
                 self.get_weather(command)
@@ -233,7 +232,7 @@ class David:
                 self.use_search_words(command)
 
             else:
-                asistente.speak("I don't know ")
+                speech.cant_do_it.play()
 
                 if LED:
                     listening_byte = "H"  # H matches the Arduino sketch code for the green color
@@ -261,7 +260,7 @@ class David:
                         if LED:
                             listening_byte = "L"  # L matches the Arduino sketch code for the blue color
                             # ser.write(listening_byte.encode("ascii"))  # encodes and sends the serial byte
-                        asistente.speak("How can I help you?")
+                        speech.waiting_prompt.play()
                         return response.lower()
 
                     else:
