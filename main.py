@@ -8,6 +8,7 @@ import random  # will be used throughout for random response choices
 import os  # used to interact with the computer's directory
 # My module with speeches to tell
 from speeches import speech
+speech.intro.play()
 
 # Speech Recognition Constants
 recognizer = sr.Recognizer()

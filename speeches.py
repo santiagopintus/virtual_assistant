@@ -21,11 +21,12 @@ class speech:
 
     # Waiting for the wake up word
     wait_to_wake_list = [
-        f'{speeches_dir}waitToWake.mp3',
-        f'{speeches_dir}waitToWake1.mp3',
-        f'{speeches_dir}waitToWake2.mp3',
-        f'{speeches_dir}waitToWake3.mp3',
-        f'{speeches_dir}waitToWake4.mp3'
+        f'{instructions_dir}waitToWake.mp3',
+        f'{instructions_dir}waitToWake1.mp3',
+        f'{instructions_dir}waitToWake2.mp3',
+        f'{instructions_dir}waitToWake3.mp3',
+        f'{instructions_dir}waitToWake4.mp3',
+        f'{instructions_dir}waitToWake5.mp3'
         ]  
     wait_to_wake = speak_random(wait_to_wake_list)
 
@@ -35,6 +36,7 @@ class speech:
         f'{instructions_dir}waitingPrompt1.mp3',
         f'{instructions_dir}waitingPrompt2.mp3',
         f'{instructions_dir}waitingPrompt3.mp3',
+        f'{instructions_dir}waitingPrompt4.mp3'
     ]
     waiting_prompt = speak_random(waiting_prompt_list)
 
