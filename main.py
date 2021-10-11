@@ -89,12 +89,12 @@ class David:
             pass
 
         elif command == "open my downloads":
-            asistente.speak("Ya te la abro")
+            asistente.speak("Ok, opening it")
             os.startfile("D:/0 Descargas")
             pass
 
         else:
-            asistente.speak("No sé como hacer eso todavía")
+            asistente.speak("I don't know how to do that, yet")
             pass
 
     # Used to track the date of the conversation, may need to add the time in the future
@@ -233,7 +233,7 @@ class David:
                 self.use_search_words(command)
 
             else:
-                asistente.speak("No sé hacer eso todavía")
+                asistente.speak("I don't know ")
 
                 if LED:
                     listening_byte = "H"  # H matches the Arduino sketch code for the green color
@@ -261,7 +261,7 @@ class David:
                         if LED:
                             listening_byte = "L"  # L matches the Arduino sketch code for the blue color
                             # ser.write(listening_byte.encode("ascii"))  # encodes and sends the serial byte
-                        asistente.speak("Cómo puedo ayudarte?")
+                        asistente.speak("How can I help you?")
                         return response.lower()
 
                     else:
